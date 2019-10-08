@@ -1,9 +1,22 @@
-function parseDevideSeparatedExpression (expression) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function parseDevideSeparatedExpression (expression) {
+    alert (`devide expression = ${expression}`)
 	const numbersString = expression.split('/');
 	const numbers = numbersString.map(noStr => +noStr);
 	const initialValue = 1.0;
 	const result = numbers.reduce((acc, no) => {
+        alert (`acc = ${acc}, no = ${no}`);
     return acc / no});
+    alert (`Devide numbersString = ${numbersString}, numbers = ${numbers}, result = ${result}`);
 	return result;
 };
 
@@ -12,6 +25,7 @@ function parseDevideSeparatedExpression (expression) {
 	const numbers = numbersString.map(noStr => parseDevideSeparatedExpression(noStr));
 	const initialValue = 1.0;
 	const result = numbers.reduce((acc, no) => acc * no, initialValue);
+    alert (`Multiply numbersString = ${numbersString}, numbers = ${numbers}, result = ${result}`);
 	return result;
 };
 
@@ -20,6 +34,7 @@ function parseDevideSeparatedExpression (expression) {
 	const numbers = numbersString.map(noStr => parseMultiplicationSeparatedExpression(noStr));
 	const initialValue = numbers[0];
 	const result = numbers.slice(1).reduce((acc, no) => acc - no, initialValue);
+    alert (`Minus numbersString = ${numbersString}, numbers = ${numbers}, result = ${result}`);
 	return result;
 };
 
@@ -28,17 +43,19 @@ function parseDevideSeparatedExpression (expression) {
 	const numbers = numbersString.map(noStr => parseMinusSeparatedExpression(noStr));
 	const initialValue = 0.0;
 	const result = numbers.reduce((acc, no) => acc + no, initialValue);
+    alert (`Plus numbersString = ${numbersString}, numbers = ${numbers}, result = ${result}`);
 	return result;
 };
-
-function eval(expr) {
-    return parsePlusSeparatedExpression(expr);
+        function eval(str) {
+        
+        return parsePlusSeparatedExpression(str).toFixed(4);
 }
 
-function expressionCalculator(expr) {
-    return eval(expr);
-}
+//function expressionCalculator(expr) {
+    // write your solution here
+//}
 
-module.exports = {
-    expressionCalculator
-}
+alert (eval("2 + 2")); //2594.7
+    </script>
+</body>
+</html>
